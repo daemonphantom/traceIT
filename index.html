@@ -461,6 +461,46 @@
             transform: scale(0.98);
         }
 
+        /* Partner Cards */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+        }
+
+        .partner-card {
+            background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(124,92,255,.4);
+        }
+
+        .partner-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .partner-card h3 {
+            font-size: 19px;
+            margin: 0;
+            color: var(--text);
+            font-weight: 600;
+        }
+
         /* Footer */
         footer {
             padding: 60px 0 40px;
@@ -731,36 +771,30 @@
     <section class="features" id="partners">
         <div class="container">
             <h2 class="section-title">Supported software and render engines</h2>
-            <div class="feature-grid">
-                <div class="card">
-                    <div class="feature-icon"><img src="./icon/blender.png" width="50" height="50"></div>
+            <div class="partner-grid">
+                <div class="partner-card">
+                    <img src="./icon/blender.png" width="60" height="60" alt="Blender">
                     <h3>Blender</h3>
-                    <p>Compute partnerships with major GPU clouds and specialized providers to keep pricing competitive and capacity elastic.</p>
                 </div>
-                <div class="card">
-                    <div class="feature-icon"><img src="./icon/autodesk_maya-logo_brandlogos.net_x7aqy.png" width="50" height="50"></div>
+                <div class="partner-card">
+                    <img src="./icon/autodesk_maya-logo_brandlogos.net_x7aqy.png" width="60" height="60" alt="Maya">
                     <h3>Maya</h3>
-                    <p>Integration pathways for common render engines and pipeline standards, built to coexist with real workflows.</p>
                 </div>
-                <div class="card">
-                    <div class="feature-icon"><img src="./icon/3dsmax.png" width="50" height="50"></div>
+                <div class="partner-card">
+                    <img src="./icon/3dsmax.png" width="60" height="60" alt="3ds Max">
                     <h3>3ds Max</h3>
-                    <p>Third-party validation for reliability, reproducibility, and performance, not just marketing claims.</p>
                 </div>
-                <div class="card">
-                    <div class="feature-icon"><img src="./icon/cinema4d.png" width="50" height="50"></div>
+                <div class="partner-card">
+                    <img src="./icon/cinema4d.png" width="60" height="60" alt="Cinema 4D">
                     <h3>Cinema 4D</h3>
-                    <p>Distribution and credibility via communities like ArtStation, Behance, and CGSociety.</p>
                 </div>
-                <div class="card">
-                    <div class="feature-icon"><img src="./icon/unreal-1.svg" width="50" height="50"></div>
+                <div class="partner-card">
+                    <img src="./icon/unreal-1.svg" width="60" height="60" alt="Unreal Engine">
                     <h3>Unreal Engine</h3>
-                    <p>Connectors and automation hooks for pipeline tooling, API-first from day one.</p>
                 </div>
-                <div class="card">
-                    <div class="feature-icon"><img src="./icon/octane.png" width="50" height="50"></div>
+                <div class="partner-card">
+                    <img src="./icon/octane.png" width="60" height="60" alt="Octane">
                     <h3>Octane</h3>
-                    <p>Real production partners shaping roadmap, reliability, and edge cases that matter under deadline pressure.</p>
                 </div>
             </div>
         </div>
