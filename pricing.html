@@ -122,6 +122,68 @@
             background: rgba(124,92,255,.1);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(255,255,255,.06);
+        }
+
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 63px;
+            left: 0;
+            right: 0;
+            background: rgba(11,15,23,.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            padding: 20px 24px;
+            z-index: 40;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(255,255,255,.08);
+        }
+
         /* Hero */
         .pricing-hero {
             padding: 80px 0 60px;
@@ -488,6 +550,10 @@
                 display: none;
             }
 
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
             .compute-table {
                 overflow-x: auto;
             }
@@ -519,8 +585,24 @@
                 <li><a href="pricing.html" class="active">Pricing</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#benefits">Why TraceIT</a></li>
+            <li><a href="index.html#use-cases">Use Cases</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
 
     <section class="pricing-hero">
         <div class="container">
@@ -694,5 +776,25 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
