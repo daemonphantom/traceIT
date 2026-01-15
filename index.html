@@ -121,11 +121,21 @@
         .hero {
             padding: 160px 0 170px;
             text-align: center;
-            background-image: url('image3.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
         }
 
         .hero::before {
@@ -618,6 +628,9 @@
     </nav>
 
     <section class="hero">
+        <video class="hero-video" muted playsinline id="hero-video">
+            <source src="rocketvideo.mp4" type="video/mp4">
+        </video>
         <div class="container">
             <h1>Render once.<br>Regenerate forever.</h1>
             <p class="tagline">
@@ -866,6 +879,26 @@
     </footer>
 
     <script>
+        // Set video playback speed to 0.7x and loop with 1 second pause
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.playbackRate = 0.5;
+            
+            // Wait 1 second before starting the video initially
+            setTimeout(function() {
+                heroVideo.play();
+            }, 500);
+            
+            // Add event listener for when video ends
+            heroVideo.addEventListener('ended', function() {
+                // Wait 1 second before replaying
+                setTimeout(function() {
+                    heroVideo.currentTime = 0;
+                    heroVideo.play();
+                }, 500);
+            });
+        }
+
         // Interest Tracker with Cloudflare Worker Backend
         const GOAL = 5000;
         const WORKER_URL = 'https://traceit-interest-counter.david-durglishvili.workers.dev'; // Replace with your worker URL
